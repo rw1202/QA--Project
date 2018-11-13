@@ -31,7 +31,8 @@ public class UserEndpoint {
 		return service.getUser(Id);
 	}
 
-	@Path("/addBooking")
+	@Path("/addUser")
+
 	@POST
 	@Produces({ "application/json" })
 	public String addUser(String dateAndTime) {
