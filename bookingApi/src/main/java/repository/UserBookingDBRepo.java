@@ -32,8 +32,8 @@ public class UserBookingDBRepo implements UserBookingRepo {
 	}
 
 	@Transactional(REQUIRED)
-	public String addBooking(String dateAndTime) {
-		Booking bk1 = util.getObjectForJSON(dateAndTime, Booking.class);
+	public String addBooking(String dateAndTime, Long userId) {
+		Booking bk1 = util.getObjectForJSONBooking(dateAndTime, userId, Booking.class);
 		manager.persist(bk1);
 		return "{\"message\":\"Booking Added\"}";
 	}
@@ -54,9 +54,9 @@ public class UserBookingDBRepo implements UserBookingRepo {
 	}
 
 	@Transactional(REQUIRED)
-	public String updateBooking(Long Id, String dateAndTime) {
+	public String updateBooking(Long Id, String dateAndTime, Long userId) {
 
-		Booking updatedBk = util.getObjectForJSON(dateAndTime, Booking.class);
+		Booking updatedBk = util.getObjectForJSONBooking(dateAndTime, userId,Booking.class);
 		Booking bkFromDB = findBooking(Id);
 		if (bkFromDB != null) {
 			bkFromDB = updatedBk;
@@ -94,7 +94,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 
 	@Transactional(REQUIRED)
 	public String addUser(String userName) {
-		User u1 = util.getObjectForJSON(userName, User.class);
+		User u1 = util.getObjectForJSONUser(userName, User.class);
 		manager.persist(u1);
 		return "{\"message\":\"User Added. Your User Id is "+u1.getUserId()+"\"}";
 	}
@@ -110,7 +110,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 
 	@Transactional(REQUIRED)
 	public String updateUser(Long Id, String userName) {
-		User updatedU = util.getObjectForJSON(userName, User.class);
+		User updatedU = util.getObjectForJSONUser(userName, User.class);
 		User UFromDB = findUser(Id);
 		if (UFromDB != null) {
 			UFromDB = updatedU;
@@ -123,6 +123,11 @@ public class UserBookingDBRepo implements UserBookingRepo {
 		return manager.find(User.class, Id);
 	}
 
+	
+
+
 	}
+
+	
 
 
