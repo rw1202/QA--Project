@@ -32,7 +32,6 @@ public class UserEndpoint {
 	}
 
 	@Path("/addUser")
-
 	@POST
 	@Produces({ "application/json" })
 	public String addUser(String dateAndTime) {
