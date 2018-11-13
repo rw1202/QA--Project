@@ -34,8 +34,8 @@ public class UserEndpoint {
 	@Path("/addUser")
 	@POST
 	@Produces({ "application/json" })
-	public String addUser(String dateAndTime) {
-		return service.addUser(dateAndTime);
+	public String addUser(String userName) {
+		return service.addUser(userName);
 	}
 
 	@Path("/deleteUser/{Id}")

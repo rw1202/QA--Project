@@ -21,7 +21,6 @@ public class JSONUtil {
 	}
 
 	public <T> T getObjectForJSONBooking(String jsonString, Long userId, Class<T> class1) {
-		
 		return gson.fromJson(jsonString, class1);
 	}
 
