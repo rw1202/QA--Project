@@ -38,8 +38,8 @@ public class BookingEndpoint {
 	@Path("/addBooking")
 	@POST
 	@Produces({ "application/json" })
-	public String addBooking(String dateAndTime) {
-		return service.addBooking(dateAndTime);
+	public String addBooking(String dateAndTime, Long userId) {
+		return service.addBooking(dateAndTime, userId);
 	}
 
 	@Path("/deleteBooking/{Id}")
@@ -51,9 +51,9 @@ public class BookingEndpoint {
 	@Path("/updateBooking/{Id}")
 	@PUT
 	@Produces({"application/json"})
-	public String updateBooking(@PathParam("Id") Long Id, String dateAndTime ) 
+	public String updateBooking(@PathParam("Id") Long Id, String dateAndTime, Long userId ) 
 	{
-		return service.updateBooking(Id, dateAndTime);
+		return service.updateBooking(Id, dateAndTime, userId);
 	}
 
 	public void setService(UserBookingRepo service) {
