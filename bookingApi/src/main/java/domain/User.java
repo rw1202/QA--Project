@@ -25,6 +25,8 @@ public class User {
 	@JoinColumn(name = "userId", referencedColumnName ="userId")
 	@OneToMany (fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     private List<Booking> bookings;
+	
+	User(){};
 
 	User(){};
 	

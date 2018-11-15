@@ -3,13 +3,13 @@ package repository;
 public interface UserBookingRepo {
 	String getAllBookings();
 
-	String addBooking(String dateAndTime);
+	String addBooking(String dateAndTime, Long userId);
 
 	String deleteBooking(Long Id);
 
 	String getBooking(Long Id);
 
-	String updateBooking(Long Id, String dateAndTime);
+	String updateBooking(Long Id, String dateAndTime, Long userId);
 
 	String getAllUsers();
 

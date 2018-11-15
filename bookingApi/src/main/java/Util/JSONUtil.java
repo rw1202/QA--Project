@@ -4,6 +4,9 @@ package Util;
 
 import com.google.gson.Gson;
 
+import domain.Booking;
+import domain.User;
+
 
 
 public class JSONUtil {
@@ -17,10 +20,15 @@ public class JSONUtil {
 		return gson.toJson(obj);
 	}
 
-	public <T> T getObjectForJSON(String jsonString, Class<T> clazz) {
-		return gson.fromJson(jsonString, clazz);
+	public <T> T getObjectForJSONBooking(String jsonString, Long userId, Class<T> class1) {
+		return gson.fromJson(jsonString, class1);
 	}
 
+	public <T> T getObjectForJSONUser(String jsonString, Class<T> class2) {
+		return gson.fromJson(jsonString, class2);
+	}
+
+	
 }
 
 
