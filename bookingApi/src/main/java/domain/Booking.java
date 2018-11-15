@@ -23,9 +23,16 @@ public class Booking {
 	private Long bookingId;
 	@Column(length= 100)
 	private String dateAndTime;
+
+	@Column(name ="userId")
+	private Long userId;
+
 	@Column (length= 100)
 	private Long userId; 
+
 	
+
+
 	
 
 	Booking(){};
@@ -33,7 +40,12 @@ public class Booking {
 	public Booking(Long bookingId, String dateAndTime, Long userId) {
 		this.bookingId=bookingId;
 		this.dateAndTime=dateAndTime;
+
+		this.userId=userId;
+		
+
 		this.userId=userId; 
+
 	
 	}
 	public Long getUserId() {
@@ -56,6 +68,12 @@ public class Booking {
 	public Long getBookingId() {
 		return bookingId;
 	} 
-	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
 }
