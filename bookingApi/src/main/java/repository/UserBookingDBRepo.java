@@ -59,8 +59,8 @@ public class UserBookingDBRepo implements UserBookingRepo {
 		Booking updatedBk = util.getObjectForJSON(dateAndTime, Booking.class);
 		Booking bkFromDB = findBooking(Id);
 		if (bkFromDB != null) {
-			bkFromDB = updatedBk;
-			manager.merge(bkFromDB);
+			manager.remove(bkFromDB);;
+			manager.merge(updatedBk);
 		}
 		return "{\"message\": \"Booking sucessfully updated\"}";
 	}
@@ -113,8 +113,11 @@ public class UserBookingDBRepo implements UserBookingRepo {
 		User updatedU = util.getObjectForJSON(userName, User.class);
 		User UFromDB = findUser(Id);
 		if (UFromDB != null) {
-			UFromDB = updatedU;
-			manager.merge(UFromDB);
+			manager.remove(UFromDB);;
+			updatedU.setUserId(Id);
+			
+			
+			manager.merge(updatedU);
 		}
 		return "{\"message\": \"User sucessfully updated\"}";
 	}
