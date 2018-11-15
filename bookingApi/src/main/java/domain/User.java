@@ -18,14 +18,16 @@ import javax.persistence.OneToMany;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "User_Id")
+	@Column(name = "userId")
 	private Long userId;
 	@Column(length = 100)
 	 private String userName;
-	@JoinColumn(name = "User_Id", referencedColumnName ="User_Id")
+	@JoinColumn(name = "userId", referencedColumnName ="userId")
 	@OneToMany (fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     private List<Booking> bookings;
 
+	User(){};
+	
 	public  User(Long userId, String userName) {
 		this.userId= userId;
 		this.userName= userName;
