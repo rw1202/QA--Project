@@ -44,7 +44,7 @@ public class Booking {
 		this.userId=userId;
 		
 
-		this.userId=userId; 
+		
 
 	
 	}
@@ -68,12 +68,6 @@ public class Booking {
 	public Long getBookingId() {
 		return bookingId;
 	} 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+	
 
 }
