@@ -26,7 +26,7 @@ public class User {
 	@OneToMany (fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     private List<Booking> bookings;
 	
-	User(){};
+	
 
 	User(){};
 	
