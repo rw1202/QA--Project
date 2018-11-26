@@ -27,8 +27,7 @@ public class Booking {
 	@Column(name ="userId")
 	private Long userId;
 
-	@Column (length= 100)
-	private Long userId; 
+
 
 	
 
