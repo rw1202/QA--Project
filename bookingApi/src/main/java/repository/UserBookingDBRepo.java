@@ -80,7 +80,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 
 
 	public String getAllUsers() {
-		Query query = manager.createQuery("Select a FROM User a");
+		Query query = manager.createQuery(Constants.U_C_QUERY);
 		Collection<User> UList = (Collection<User>) query.getResultList();
 		return util.getJSONForObject(UList);
 
