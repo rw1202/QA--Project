@@ -13,19 +13,22 @@ import javax.transaction.Transactional;
 import Util.JSONUtil;
 import domain.Booking;
 import domain.User;
+import Util.Constants;
 
 @Transactional(SUPPORTS)
 @Default
 public class UserBookingDBRepo implements UserBookingRepo {
+	
+
 	@Inject
 	private JSONUtil util;
-	@PersistenceContext(unitName = "primary")
+	@PersistenceContext(unitName = Constants.U_NAME)
 	private EntityManager manager;
 	
 
 
 	public String getAllBookings() {
-		Query query = manager.createQuery("Select a FROM Booking a");
+		Query query = manager.createQuery(Constants.B_C_QUERY);
 		Collection<Booking> BList = (Collection<Booking>) query.getResultList();
 		return util.getJSONForObject(BList);
 
@@ -35,7 +38,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 	public String addBooking(String dateAndTime, Long userId) {
 		Booking bk1 = util.getObjectForJSONBooking(dateAndTime, userId, Booking.class);
 		manager.persist(bk1);
-		return "{\"message\":\"Booking Added\"}";
+		return Constants.ADD_MESSAGE;
 	}
 
 	@Transactional(REQUIRED)
@@ -44,7 +47,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 		if (bkInDb != null) {
 			manager.remove(bkInDb);
 		}
-		return "{\"message\": \"Booking sucessfully deleted\"}";
+		return Constants.DEL_MESSAGE;
 	}
 
 	public String getBooking(Long Id) {
@@ -62,7 +65,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 			manager.remove(bkFromDB);;
 			manager.merge(updatedBk);
 		}
-		return "{\"message\": \"Booking sucessfully updated\"}";
+		return Constants.UPD_MESSAGE;
 	}
 
 	private Booking findBooking(Long Id) {
@@ -96,7 +99,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 	public String addUser(String userName) {
 		User u1 = util.getObjectForJSONUser(userName, User.class);
 		manager.persist(u1);
-		return "{\"message\":\"User Added. Your User Id is "+u1.getUserId()+"\"}";
+		return Constants.ADD_MESSAGE;
 	}
 
 	@Transactional(REQUIRED)
@@ -105,7 +108,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 		if (UInDb != null) {
 			manager.remove(UInDb);
 		}
-		return "{\"message\": \"User sucessfully deleted\"}";
+		return Constants.DEL_MESSAGE;
 	}
 
 	@Transactional(REQUIRED)
@@ -119,7 +122,7 @@ public class UserBookingDBRepo implements UserBookingRepo {
 			
 			manager.merge(updatedU);
 		}
-		return "{\"message\": \"User sucessfully updated\"}";
+		return Constants.UPD_MESSAGE;
 	}
 	
 	private User findUser(Long Id) {

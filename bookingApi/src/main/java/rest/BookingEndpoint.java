@@ -8,49 +8,51 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-
-
+import Util.Constants;
 import repository.UserBookingRepo;
 
 
-@Path ("/Booking")
+@Path (Constants.BK_SUPERPATH)
 
 public class BookingEndpoint {
 	
 	
+	
+
+	
 	@Inject
 	private UserBookingRepo service;
 
-	@Path("/getAllBookings")
+	@Path(Constants.GET_ALL_BKS)
 	@GET
-	@Produces({ "application/json" })
+	@Produces({ Constants.PROD_JSON })
 	public String getAllBookings() {
 		return service.getAllBookings();
 	}
 	
-	@Path("/getBooking/{Id}")
+	@Path(Constants.GET_BKS)
 	@GET
-	@Produces({ "application/json" })
+	@Produces({ Constants.PROD_JSON })
 	public String getBooking(@PathParam("Id") Long Id) {
 		return service.getBooking(Id);
 	}
 
-	@Path("/addBooking")
+	@Path(Constants.ADD_BK)
 	@POST
-	@Produces({ "application/json" })
+	@Produces({Constants.PROD_JSON })
 	public String addBooking(String dateAndTime, Long userId) {
 		return service.addBooking(dateAndTime, userId);
 	}
 
-	@Path("/deleteBooking/{Id}")
+	@Path(Constants.DEL_BK)
 	@GET
-	@Produces({ "application/json" })
+	@Produces({ Constants.PROD_JSON })
 	public String deleteBooking(@PathParam("Id") Long Id) {
 		return service.deleteBooking(Id);
 	}
-	@Path("/updateBooking/{Id}")
+	@Path(Constants.UPD_BK)
 	@PUT
-	@Produces({"application/json"})
+	@Produces({Constants.PROD_JSON})
 	public String updateBooking(@PathParam("Id") Long Id, String dateAndTime, Long userId ) 
 	{
 		return service.updateBooking(Id, dateAndTime, userId);
